@@ -10,7 +10,7 @@ class Program
         int secondDigit = int.Parse(userInput.Substring(1,1));
         int percentage = int.Parse(userInput);
         string letter = " ";
-        string stretch = "";
+        string stretch = "":
 
         if (percentage >= 90)
         {
