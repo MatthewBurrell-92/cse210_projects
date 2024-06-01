@@ -3,17 +3,18 @@ using System;
 public class Scripture
 {
     private List<Word> _words = new List<Word>();
-    private Reference _reference;
+    private string _reference;
 
-    public Reference()
+    public void GetReference(Reference reference)
     {
-        // NEEDS WORK
         _reference = reference.GetReference();
+        // Console.WriteLine(_reference);
     }
 
     public void DisplayScripture()
     {
         Console.Clear();
+        Console.WriteLine(_reference);
         // _reference.GetReference();
         foreach (Word word in _words)
         {
