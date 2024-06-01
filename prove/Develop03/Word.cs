@@ -5,7 +5,7 @@ public class Word
     private string _word;
     private bool _isHidden;
 
-        public Word(string word, bool hidden = false)
+    public Word(string word, bool hidden = false)
     {
         _word = word;
         _isHidden = hidden;
@@ -15,28 +15,32 @@ public class Word
     {
         Console.WriteLine(_word);
     }
-    public bool Hide(Word word) 
+    public void Hide() 
     {
-        if (word._isHidden == true)
+        _isHidden = true;
+    }
+
+    public void Show()
+    {
+        _isHidden = false;
+    }
+
+    public bool IsHidden()
+    {
+        if (_isHidden == true)
         {
-            return false;
+            return true;
         }
         else
         {
-            word._isHidden = true;
-            return true;  
+            return false;
         }
-    }
-
-    
-    public void Show(Word word)
-    {
-        word._isHidden = false;
     }
     public void Render()
     {
         if (_isHidden == false)
         {
+            // DON'T TOUCH
             Console.Write($"{_word} ");
         }
         else
@@ -48,7 +52,7 @@ public class Word
             int length = (_word.Length);
             char c = '_';
             String hidden_word = new String(c, length);
-            Console.Write(hidden_word);
+            Console.Write($"{hidden_word} ");
         }
     }
      
