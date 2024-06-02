@@ -7,26 +7,21 @@ public class Word
 
     public Word(string word, bool hidden = false)
     {
+        // I have come to appreciate constructors.
         _word = word;
         _isHidden = hidden;
     }
 
-    public void DisplayWords()
-    {
-        Console.WriteLine(_word);
-    }
     public void Hide() 
     {
+        // This is pretty obvious, right?
         _isHidden = true;
-    }
-
-    public void Show()
-    {
-        _isHidden = false;
     }
 
     public bool IsHidden()
     {
+        // I had this method return a Boolean so that I
+        // could use it to determine if the word is hidden.
         if (_isHidden == true)
         {
             return true;
@@ -41,6 +36,7 @@ public class Word
         if (_isHidden == false)
         {
             // DON'T TOUCH
+            // Again, this was working and I didn't want to break it...
             Console.Write($"{_word} ");
         }
         else
