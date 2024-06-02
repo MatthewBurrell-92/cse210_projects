@@ -8,14 +8,12 @@ public class Scripture
     public void GetReference(Reference reference)
     {
         _reference = reference.GetReference();
-        // Console.WriteLine(_reference);
     }
 
     public void DisplayScripture()
     {
         Console.Clear();
         Console.WriteLine(_reference);
-        // _reference.GetReference();
         foreach (Word word in _words)
         {
             word.Render();
