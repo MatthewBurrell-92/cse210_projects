@@ -5,7 +5,6 @@ class Program
     static void Main(string[] args)
     {
         bool quit = false;
-        bool valid = false;
         int activity = 0;
         while (quit == false)
         {
@@ -21,29 +20,28 @@ class Program
             if (activity == 1)
             {
                 // Breathing activity
-                // Console.WriteLine(" ");
-                // Console.WriteLine("Breathing. ");
-                // Console.WriteLine(" ");
-
                 BreathingActivity breathing1 = new BreathingActivity();
-                breathing1.DisplayBeginningMesasge();
-                breathing1.SetSeconds();
+                // breathing1.DisplayBeginningMesasge();
+                breathing1.RunBreathingActivity();
+                // breathing1.Duration();
+                // breathing1.GetDuration();
             }
 
             else if (activity == 2)
             {
                 // Reflection activity
-                Console.WriteLine(" ");
-                Console.WriteLine("Reflection. ");
-                Console.WriteLine(" ");
+                ReflectionActivity reflection1 = new ReflectionActivity();
+                // reflection1.DisplayBeginningMessage();
+                reflection1.RunReflectionActivity();
+                // reflection1.Duration();
             }
 
             else if (activity == 3)
             {
                 // Listing activity
-                Console.WriteLine(" ");
-                Console.WriteLine("Listing. ");
-                Console.WriteLine(" ");
+                ListingActivity listing1 = new ListingActivity();
+                listing1.RunListingActivity();
+                // listing1.Duration();
             }
 
             else if (activity == 4)
