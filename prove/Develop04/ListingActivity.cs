@@ -27,6 +27,10 @@ public class ListingActivity : Activity
         _listingPrompt = prompts[index];
         return _listingPrompt;
     }
+    public void DisplayPrompt()
+    {
+        Console.WriteLine($"---{_listingPrompt}---");
+    }
     public void GetAnswers(int duration)
     {
         DateTime startTime = DateTime.Now;
@@ -39,25 +43,26 @@ public class ListingActivity : Activity
             Console.ReadLine();
             currentTime = DateTime.Now;
         }
-
     }
     public void RunListingActivity()
     {
+        // As previously stated in the BreathingActivity, I'm not using
+        // this method anymore. 
         DisplayBeginningMessage();
         Console.WriteLine(" ");
         Duration();
         Console.Clear();
-        Console.WriteLine("Get ready...");
-        DisplayAnimation();
-        _listingPrompt = GetRandomPrompt();
-        Console.WriteLine($"---{_listingPrompt}---");
-        Console.WriteLine(" ");
-        Console.WriteLine($"You may begin in 5 seconds...");
-        DisplayAnimation();
-        Console.Clear();
-        Console.WriteLine($"---{_listingPrompt}---");
-        GetAnswers(_duration);
-        DisplayEndingMessage();
-        Console.Clear();
+        // Console.WriteLine("Get ready...");
+        // DisplayAnimation();
+        // _listingPrompt = GetRandomPrompt();
+        // Console.WriteLine($"---{_listingPrompt}---");
+        // Console.WriteLine(" ");
+        // Console.WriteLine($"You may begin in 5 seconds...");
+        // DisplayAnimation();
+        // Console.Clear();
+        // Console.WriteLine($"---{_listingPrompt}---");
+        // // GetAnswers(_duration);
+        // DisplayEndingMessage();
+        // Console.Clear();
     }
 }
