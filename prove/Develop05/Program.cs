@@ -1,15 +1,11 @@
-using System;
+using System.IO;
 
 class Program
 {
-
-
     static void Main(string[] args)
     {
         List<Goal> Goals = new List<Goal>();
         Gamification game1 = new Gamification();
-        // Goal simpleGoal1 = new SimpleGoal();
-        // Goals.Add(simpleGoal1);
         bool quit = false;
         while (quit == false)
         {
@@ -34,10 +30,8 @@ class Program
             {
                 Console.WriteLine(e.Message);
             }
-
             if (choice == 1)
             {
-                // CreateGoal();
                 Console.WriteLine("The types of Goals are: ");
                 Console.WriteLine("    1. Simple Goal");
                 Console.WriteLine("    2. Eternal Goal");
@@ -83,15 +77,92 @@ class Program
             }
             else if (choice == 3)
             {
+                string file_name = "goalsFile.txt";
 
+
+                using (StreamWriter outputFile = new StreamWriter(file_name))
+                {
+                    game1.SaveToFile(outputFile);
+                    outputFile.WriteLine("");
+                    foreach (Goal goal in Goals)
+                    {
+                        goal.SaveToFile(outputFile);
+                        outputFile.WriteLine("");
+                    }
+                }
             }
             else if (choice == 4)
             {
+                Console.WriteLine("");
+                Console.WriteLine("What file do you want to load? ");
+                string filename = Console.ReadLine();
+                try
+                {
+                    string[] lines = System.IO.File.ReadAllLines(filename);
+                    game1.AddPoints(int.Parse(lines[0]));
 
+                    lines = lines.Skip(1).ToArray();
+
+                    foreach (string line in lines)
+                    {
+                        string[] parts = line.Split("/");
+                        int goalType = int.Parse(parts[0]);
+                        if (goalType == 1)
+                        {
+                            Goal simpleGoal1 = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]),
+                            bool.Parse(parts[4]));
+                            Goals.Add(simpleGoal1);
+                        }
+                        if (goalType == 2)
+                        {
+                            Goal eternalGoal1 = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]),
+                            int.Parse(parts[4]));
+                            Goals.Add(eternalGoal1);
+                        }
+                        if (goalType == 3)
+                        {
+                            Goal checklistGoal1 = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]),
+                            int.Parse(parts[4]), int.Parse(parts[5]), int.Parse(parts[6]));
+                            Goals.Add(checklistGoal1);
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("File is in incorrect format, empty, or doesn't exist. ");
+                }
             }
+
             else if (choice == 5)
             {
-
+                Console.WriteLine("Goals are: ");
+                int i = 1;
+                foreach (Goal goal in Goals)
+                {
+                    Console.Write($"{i}. ");
+                    goal.DisplayGoalName();
+                    i += 1;
+                }
+                Console.WriteLine("Which goal did you accomplish? ");
+                string input3 = Console.ReadLine();
+                int choice3 = -1;
+                int totalGoals = Goals.Count + 1;
+                try
+                {
+                    choice3 = int.Parse(input3);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                if (choice3 <= Goals.Count & choice3 > 0)
+                {
+                    Goals[choice3 - 1].RecordEvent(game1);
+                }
+            }
+            else if (choice == 6)
+            {
+                quit = true;
             }
             else
             {
@@ -107,8 +178,6 @@ class Program
         {
             Goal simpleGoal1 = new SimpleGoal();
             return simpleGoal1;
-            // Goals.Add(simpleGoal1);
-            // Goal.AddGoal(simpleGoal1);
         }
         if (option == 2)
         {
@@ -124,16 +193,6 @@ class Program
         {
             return null;
         }
-
-        // }
-        // else
-        // {
-        //     return eternalGoal1;
-        // }
-
-        //     Console.WriteLine("Invalid input.");
-        //     Console.WriteLine("Press enter to continue. ");
-        //     Console.ReadLine();
     }
 
 }

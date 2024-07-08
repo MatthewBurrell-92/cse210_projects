@@ -8,6 +8,10 @@ public class Gamification
     {
         _totalPoints = 0;
     }
+    public Gamification(int points)
+    {
+        _totalPoints = points;
+    }
 
     public int AddPoints(int points)
     {
@@ -17,5 +21,10 @@ public class Gamification
     public void DisplayPoints()
     {
         Console.WriteLine($"You have {_totalPoints} points. ");
+    }
+
+    public void SaveToFile(StreamWriter outputFile)
+    {
+        outputFile.Write($"{_totalPoints}");
     }
 }
