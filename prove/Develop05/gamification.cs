@@ -18,9 +18,9 @@ public class Gamification
         _totalPoints += points;
         return _totalPoints;
     }
-    public void DisplayPoints()
+    public int DisplayPoints()
     {
-        Console.WriteLine($"You have {_totalPoints} points. ");
+        return _totalPoints;
     }
 
     public void SaveToFile(StreamWriter outputFile)

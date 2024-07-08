@@ -66,6 +66,7 @@ public class ChecklistGoal : Goal
         {
             game.AddPoints(_bonus);
         }
+        Console.WriteLine($"You now have {game.DisplayPoints()} points. ");
     }
 
 }

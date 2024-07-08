@@ -10,7 +10,7 @@ class Program
         while (quit == false)
         {
             Console.WriteLine("");
-            game1.DisplayPoints();
+            Console.WriteLine($"You have {game1.DisplayPoints()} points");
             Console.WriteLine("\nMenu Options: ");
             Console.WriteLine("1. Create New Goal");
             Console.WriteLine("2. List Goals");
@@ -21,7 +21,6 @@ class Program
             Console.Write("Select a choice from the menu: ");
             string input = Console.ReadLine();
             int choice = -1;
-
             try
             {
                 choice = int.Parse(input);
@@ -49,15 +48,18 @@ class Program
                 }
                 if (choice2 == 1)
                 {
-                    Goals.Add(CreateGoal(1));
+                    Goal simpleGoal1 = new SimpleGoal();
+                    Goals.Add(simpleGoal1);
                 }
                 else if (choice2 == 2)
                 {
-                    Goals.Add(CreateGoal(2));
+                    Goal eternalGoal1 = new EternalGoal();
+                    Goals.Add(eternalGoal1);
                 }
                 else if (choice2 == 3)
                 {
-                    Goals.Add(CreateGoal(3));
+                    Goal checklistGoal1 = new ChecklistGoal();
+                    Goals.Add(checklistGoal1);
                 }
                 else
                 {
@@ -78,8 +80,6 @@ class Program
             else if (choice == 3)
             {
                 string file_name = "goalsFile.txt";
-
-
                 using (StreamWriter outputFile = new StreamWriter(file_name))
                 {
                     game1.SaveToFile(outputFile);
@@ -169,30 +169,5 @@ class Program
                 Console.WriteLine("\nPlease enter a number between 1 and 6. \n");
             }
         }
-
-
     }
-    static Goal CreateGoal(int option)
-    {
-        if (option == 1)
-        {
-            Goal simpleGoal1 = new SimpleGoal();
-            return simpleGoal1;
-        }
-        if (option == 2)
-        {
-            Goal eternalGoal1 = new EternalGoal();
-            return eternalGoal1;
-        }
-        if (option == 3)
-        {
-            Goal checklistGoal1 = new ChecklistGoal();
-            return checklistGoal1;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
 }

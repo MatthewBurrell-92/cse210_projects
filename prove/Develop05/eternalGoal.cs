@@ -15,15 +15,11 @@ public class EternalGoal : Goal
 
     public override void SaveToFile(StreamWriter outputFile)
     {
-        // This function was pretty easy for me to figure out.
-        // using (StreamWriter outputFile = new StreamWriter(file_name))
-        // {
         outputFile.Write("2/");
         outputFile.Write($"{_goalName}/");
         outputFile.Write($"{_description}/");
         outputFile.Write($"{_points}/");
         outputFile.Write($"{_iterations}/");
-        // }
     }
     public override void DisplayGoal()
     {
@@ -33,10 +29,10 @@ public class EternalGoal : Goal
     {
         Console.WriteLine(_goalName);
     }
-
     public override void RecordEvent(Gamification game)
     {
         game.AddPoints(_points);
         _iterations += 1;
+        Console.WriteLine($"You now have {game.DisplayPoints()} points. ");
     }
 }

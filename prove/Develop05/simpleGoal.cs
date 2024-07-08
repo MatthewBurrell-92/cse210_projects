@@ -11,26 +11,24 @@ public class SimpleGoal : Goal
     {
         _complete = complete;
     }
-    public override string IsComplete(Gamification game)
-    {
-        game.AddPoints(_points);
-        return "Your goal is complete!";
-    }
-
+    // public override string IsComplete(Gamification game)
+    // {
+    //     game.AddPoints(_points);
+    //     return "Your goal is complete!";
+    // }
     public override void RecordEvent(Gamification game)
     {
         if (!_complete)
         {
             game.AddPoints(_points);
             _complete = true;
+            Console.WriteLine($"You now have {game.DisplayPoints()} points. ");
         }
         else
         {
             Console.WriteLine("You've completed this goal. ");
         }
-
     }
-
     public override void DisplayGoal()
     {
         if (_complete == false)
@@ -46,7 +44,6 @@ public class SimpleGoal : Goal
     {
         Console.WriteLine(_goalName);
     }
-
     public override void SaveToFile(StreamWriter outputFile)
     {
         outputFile.Write("1/");
@@ -55,5 +52,4 @@ public class SimpleGoal : Goal
         outputFile.Write($"{_points}/");
         outputFile.Write($"{_complete}/");
     }
-
 }
