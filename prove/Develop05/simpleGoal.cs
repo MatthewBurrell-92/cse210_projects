@@ -2,7 +2,7 @@ using System;
 
 public class SimpleGoal : Goal
 {
-    bool _complete;
+    private bool _complete;
     public SimpleGoal() : base()
     {
         _complete = false;

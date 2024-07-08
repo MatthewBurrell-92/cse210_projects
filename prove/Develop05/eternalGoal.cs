@@ -2,7 +2,7 @@ using System;
 
 public class EternalGoal : Goal
 {
-    int _iterations;
+    private int _iterations;
 
     public EternalGoal() : base()
     {

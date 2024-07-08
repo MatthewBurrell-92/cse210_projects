@@ -79,7 +79,8 @@ class Program
             }
             else if (choice == 3)
             {
-                string file_name = "goalsFile.txt";
+                Console.WriteLine("To what file would you like to save your goals? ");
+                string file_name = Console.ReadLine();
                 using (StreamWriter outputFile = new StreamWriter(file_name))
                 {
                     game1.SaveToFile(outputFile);
