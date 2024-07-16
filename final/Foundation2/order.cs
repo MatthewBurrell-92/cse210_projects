@@ -9,30 +9,38 @@ public class Order
     {
         _customer = customer;
     }
-    public void DisplayPackingLabel()
+
+    public void AddProducts(Product productToBeAdded)
     {
-        // not dun
-        Console.WriteLine("Things");
+        _products.Add(productToBeAdded);
     }
     public void DisplayPackingLabel()
     {
-        // name and id of each product
+        // product name and ID
+        foreach (Product product in _products)
+        {
+            Console.WriteLine(product.GetProductInfo());
+        }
     }
-    public float CalculatePrice()
+    public void DisplayShippingLabel()
     {
-        float totalPrice = 0;
-        float shippingPrice;
+        Console.WriteLine(_customer.GetShippingInfo());
+    }
+    public decimal CalculatePrice()
+    {
+        decimal totalPrice = 0;
+        decimal shippingPrice;
         if (_customer.DomesticOrNot())
         {
-            shippingPrice = 5.00f;
+            shippingPrice = 5.00m;
         }
         else
         {
-            shippingPrice = 35.00f;
+            shippingPrice = 35.00m;
         }
         foreach (Product product in _products)
         {
-            totalPrice += product.GetPrice();
+            totalPrice += product.CalculateTotal();
         }
         totalPrice += shippingPrice;
         return totalPrice;

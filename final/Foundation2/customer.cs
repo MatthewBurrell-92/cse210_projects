@@ -21,12 +21,18 @@ public class Customer
             return false;
         }
     }
-    public string GetName()
+    // public string GetName()
+    // {
+    //     return _name;
+    // }
+    // public Address GetAddress()
+    // {
+    //     return _address;
+    // }
+
+    public string GetShippingInfo()
     {
-        return _name;
-    }
-    public Address GetAddress()
-    {
-        return _address;
+        string shippingInfo = $"{_name}\n{_address.GetAddress()}";
+        return shippingInfo;
     }
 }

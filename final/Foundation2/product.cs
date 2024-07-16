@@ -4,31 +4,37 @@ public class Product
 {
     private string _name;
     private int _productId;
-    private float _price;
+    private decimal _price;
     private int _quantity;
-    
-    public Product(string name, int productId, float price, int quantity)
+
+    public Product(string name, int productId, decimal price, int quantity)
     {
         _name = name;
         _productId = productId;
         _price = price;
         _quantity = quantity;
     }
-    public float CalculateTotal()
+    public decimal CalculateTotal()
     {
-        float total = 1.1f;
+        decimal total = _price * _quantity;
         return total;
     }
-    public float GetPrice()
+    public decimal GetPrice()
     {
         return _price;
     }
-    public int GetQuantity()
+    // public int GetQuantity()
+    // {
+    //     return _quantity;
+    // }
+    // public string GetName()
+    // {
+    //     return _name;
+    // }
+
+    public string GetProductInfo()
     {
-        return _quantity;
-    }
-    public string GetName()
-    {
-        return _name;
+        string packingInfo = $"{_name}, ID:{_productId}";
+        return packingInfo;
     }
 }
