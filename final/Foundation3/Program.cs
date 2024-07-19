@@ -17,14 +17,6 @@ class Program
         string outdoorDescription = "Come play Pickleball until you hate it!";
         Outdoor outdoorEvent = new Outdoor("Pickleball Tournamet", outdoorDescription, "7/23/1904", "0400", outdoorAddress, "Clear skies");
 
-        // Console.WriteLine("Standard:\n");
-        // lectureEvent.DisplayStandard();
-
-        // Console.WriteLine("\nFull:\n");
-        // lectureEvent.DisplayFull();
-
-        // Console.WriteLine("\nShort:\n");
-        // lectureEvent.DisplayShort();
         bool quit = false;
         while (quit == false)
         {
@@ -36,21 +28,28 @@ class Program
             Console.WriteLine("4. Quit ");
             int whichEvent = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("What information do you want? ");
-            Console.WriteLine("1. Standard Details\n2. Full Details\n3. Short Details ");
-            int whatInformation = int.Parse(Console.ReadLine());
+            if (whichEvent == 4)
+            {
+                quit = true;
+            }
+            else
+            {
+                Console.WriteLine("What information do you want? ");
+                Console.WriteLine("1. Standard Details\n2. Full Details\n3. Short Details ");
+                int whatInformation = int.Parse(Console.ReadLine());
 
-            if (whichEvent == 1)
-            {
-                CallInformationMethod(lectureEvent, whatInformation);
-            }
-            if (whichEvent == 2)
-            {
-                CallInformationMethod(receptionEvent, whatInformation);
-            }
-            if (whichEvent == 3)
-            {
-                CallInformationMethod(outdoorEvent, whatInformation);
+                if (whichEvent == 1)
+                {
+                    CallInformationMethod(lectureEvent, whatInformation);
+                }
+                if (whichEvent == 2)
+                {
+                    CallInformationMethod(receptionEvent, whatInformation);
+                }
+                if (whichEvent == 3)
+                {
+                    CallInformationMethod(outdoorEvent, whatInformation);
+                }
             }
         }
     }
